@@ -1,9 +1,9 @@
 {
-    "name": "infinity-factory",
-    "version": "0.0.1",
-    "title": "Infinity Factory",
-    "description": "Infinity technologies and items for you",
-    "author": "Bronuh, VasterLordEP, KeyJ",
-    "factorio_version": "1.1",
-	"dependencies": ["base >= 1.1.0"]
-  }
+  "name": "infinity-factory",
+  "version": "0.0.1",
+  "title": "Infinity Factory",
+  "description": "Infinity technologies and items for you",
+  "author": "Bronuh, VasterLordEP, KeyJ",
+  "factorio_version": "1.1",
+  "dependencies": ["base >= 1.1.0"]
+}
