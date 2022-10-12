@@ -6,3 +6,4 @@ require "functions.add_data"
 
 require "prototypes.entity.entities.assembler"
 require "prototypes.entity.entities.belt"
+require "prototypes.entity.enemy"
