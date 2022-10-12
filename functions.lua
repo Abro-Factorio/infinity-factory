@@ -10,11 +10,11 @@ function create_build_with_level(exmaple_type, exmaple_name, prefix_name, level)
     object.type = exmaple_type
     object.name = new_name
     object.minable.result = new_name
-    object.max_health = math.min(prev_object.max_health * math.pow(Config.upgrade_multiplier, level), Const.MAX_HP)
+    object.max_health = math.min(prev_object.max_health * math.pow(Config.upgrade_multiplier, level), Consts.MAX_HP)
     object.crafting_speed = prev_object.crafting_speed * math.pow(Config.upgrade_multiplier, level)
     object.energy_source.emissions_per_minute = prev_object.energy_source.emissions_per_minute * math.pow(Config.upgrade_multiplier, level)
     object.energy_usage = string.sub(prev_object.energy_usage, 0, -3) * math.pow(Config.upgrade_multiplier, level) .. string.sub(prev_object.energy_usage, -2, -1)
-    object.module_specification.module_slots = math.min(prev_object.module_specification.module_slots * math.pow(Config.upgrade_multiplier, level), Const.MAX_MODULE_SLOTS)
+    object.module_specification.module_slots = math.min(prev_object.module_specification.module_slots * math.pow(Config.upgrade_multiplier, level), Consts.MAX_MODULE_SLOTS)
     if level < Config.additional_levels then
         object.next_upgrade = get_name_by_level(prefix_name, level+1)
     else 
