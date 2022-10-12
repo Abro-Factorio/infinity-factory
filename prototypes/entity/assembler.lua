@@ -1,87 +1,44 @@
-LEVELS = settings.startup["infinity-factory-additional-tiers"].value
+local EXAMPLE_TYPE = "assembling-machine"
+local EXAMPLE_NAME = "assembling-machine-3"
+local PREFIX_NAME = "assembling-machine-"
 
-for i = 1, LEVELS do
-    assembler_object = util.table.deepcopy(data.raw["assembling-machine"]["assembling-machine-3"])
-    assembler_object.type = "assembling-machine"
-    assembler_object.name = "assembling-machine-T" .. i
-    -- assembler_object.max_health = 400 * math.pow(2, i)
-    assembler_object.crafting_speed = 1.25 * math.pow(2, i)
-    assembler_object.energy_source.emissions_per_minute = 2 * math.pow(2, i)
-    assembler_object.energy_usage = 375 * math.pow(2, i) .. "kW"
-    -- assembler_object.module_specification.module_slots = 4 * math.pow(2, i)
 
-    assembler_item = {
+local prev_object = util.table.deepcopy(data.raw[EXAMPLE_TYPE][EXAMPLE_NAME])
+prev_object.next_upgrade = get_name_by_level(PREFIX_NAME, 1)
+data:extend({
+    prev_object
+})
+
+for i = 1, Config.additional_levels do 
+    local new_name = get_name_by_level(PREFIX_NAME, i)
+    local object = create_build_with_level(EXAMPLE_TYPE, EXAMPLE_NAME, PREFIX_NAME, i)
+
+    local item = {
         type = "item",
-        name = "assembling-machine-T" .. i,
+        name = new_name,
         icon = "__base__/graphics/icons/assembling-machine-3.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
-        order = "c[assembling-machine-T" .. i .. "]",
-        place_result = "assembling-machine-T" .. i,
+        order = "c[" .. new_name.. "]", --TODO настроить порядок, чтобы в списке рецептов Т10 шёл после Т9, а не после Т1.
+        place_result = new_name,
         stack_size = 50
     }
 
-    assembler_recipe = {
+    local recipe = {
         type = "recipe",
-        name = "assembling-machine-T" .. i,
+        name = new_name,
+        energy_required = 0.5 * math.pow(Config.cost_multiplier, i), -- TODO can be nil? default = 0.5 
+        enabled = true, -- TODO false // table.insert(data.raw["technology"]["advanced-material-processing"].effects,{type = "unlock-recipe",recipe = "assembling-machine-T1"})
         ingredients = {
-          {"stone-furnace", 1 * i},
-          {"electronic-circuit", 1 * i},
-          {"iron-plate", 1 * i}
+            {"speed-module", math.min(4 * math.pow(Config.cost_multiplier, i), Consts.MAX_COST_ITEM_COUNT)}, -- TODO что делаем с лимитом стоимости?
+            {"assembling-machine-2", math.min(2 * math.pow(Config.cost_multiplier, i), Consts.MAX_COST_ITEM_COUNT)}
         },
-        result = "assembling-machine-T" .. i,
-        enabled = true
+        result = new_name
     }
 
     data:extend({
-        assembler_object,
-        assembler_item,
-        assembler_recipe
+        object,
+        item,
+        recipe
     })
 end
-
---[[
-assembler_t1 = util.table.deepcopy(data.raw["assembling-machine"]["assembling-machine-3"])
-assembler_t1.type = "assembling-machine"
-assembler_t1.name = "assembling-machine-T1"
-assembler_t1.max_health = 800
-assembler_t1.crafting_speed = 2.5
-assembler_t1.energy_source.emissions_per_minute = 4
-assembler_t1.energy_usage = "750kW"
-assembler_t1.module_specification.module_slots = 8 
-
-assembler_t1_item = {
-    type = "item",
-    name = "assembling-machine-T1",
-    icon = "__base__/graphics/icons/assembling-machine-3.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "production-machine",
-    order = "c[assembling-machine-T1]",
-    place_result = "assembling-machine-T1",
-    stack_size = 50
-  }
-
-assembler_t1_recipe = {
-    type = "recipe",
-    name = "assembling-machine-T1",
-    ingredients = {
-      {"stone-furnace", 1},
-      {"electronic-circuit", 1},
-      {"iron-plate", 1}
-    },
-    result = "assembling-machine-T1",
-    enabled = true
-  }
-
-data:extend({
-    assembler_t1,
-    assembler_t1_item,
-    assembler_t1_recipe
-
-      
-    
-      
-})
---]]
-
--- table.insert(data.raw["technology"]["advanced-material-processing"].effects,{type = "unlock-recipe",recipe = "assembling-machine-T1"})
