@@ -2,7 +2,6 @@ local EXAMPLE_TYPE = "assembling-machine"
 local EXAMPLE_NAME = "assembling-machine-3"
 local PREFIX_NAME = "assembling-machine-"
 
-
 local prev_object = util.table.deepcopy(data.raw[EXAMPLE_TYPE][EXAMPLE_NAME])
 prev_object.next_upgrade = get_name_by_level(PREFIX_NAME, 1)
 data:extend({
