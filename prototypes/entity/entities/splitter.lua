@@ -1,6 +1,6 @@
-local EXAMPLE_TYPE = "transport-belt"
-local EXAMPLE_NAME = "express-transport-belt"
-local PREFIX_NAME = "transport-belt-"
+local EXAMPLE_TYPE = "splitter"
+local EXAMPLE_NAME = "express-splitter"
+local PREFIX_NAME = "splitter-"
 
 local function object_updater(zero_object, level, object)
     object.speed = math.min(zero_object.speed * math.pow(Config.upgrade_multiplier, level), Consts.BELT_MAX_SPEED)
