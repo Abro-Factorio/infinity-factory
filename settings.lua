@@ -22,5 +22,13 @@ _G.data:extend({
         minimum_value = 2,
 		maximum_value = 16,
 		default_value = 4
+	},
+	{
+		type = "int-setting", -- TODO double?
+		name = "infinity-factory-cost-expensive-multiplier",
+		setting_type = "startup",
+        minimum_value = 4,
+		maximum_value = 16,
+		default_value = 8
 	}
 })
