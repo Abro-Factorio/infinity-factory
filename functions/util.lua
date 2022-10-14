@@ -64,7 +64,7 @@ function serializeTable(val, name, skipnewlines, depth)
 end
 
 function get_from_array(arr, type_key, type_value)
-    for i,element in arr do
+    for i,element in pairs(arr) do
         if element[type_key] == type_value then 
             return element
         end
