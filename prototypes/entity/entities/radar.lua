@@ -8,7 +8,7 @@ local function object_updater(zero_object, level, object)
     object.max_distance_of_nearby_sector_revealed = zero_object.max_distance_of_nearby_sector_revealed * math.pow(Config.upgrade_multiplier, level)
     object.energy_per_nearby_scan = change_energy_pow_upgrade(zero_object.energy_per_nearby_scan, level)
     object.rotation_speed = zero_object.rotation_speed * math.pow(Config.upgrade_multiplier, level)
-    -- TODO scan_speed? Work now or not?
+    -- TODO scan_speed? Work now or not? Linear grow?
 end
 
 add_data_all_levels(EXAMPLE_TYPE, EXAMPLE_NAME, PREFIX_NAME, object_updater, Consts.EMPTY_FUNCTION, Consts.EMPTY_FUNCTION)

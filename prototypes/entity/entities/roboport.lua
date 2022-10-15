@@ -13,8 +13,8 @@ local function object_updater(zero_object, level, object)
 
     
     object.charging_offsets = {}
-    for i = 1, math.min(#zero_object.charging_offsets * math.pow(Config.upgrade_multiplier, level), MAX_CHARGING_OFFSET_COUNT) do
-        object.charging_offsets[i] = zero_object.charging_offsets[i % #zero_object.charging_offsets]
+    for i = 1, math.min(#zero_object.charging_offsets * math.pow(Config.upgrade_multiplier, level), Consts.MAX_CHARGING_OFFSET_COUNT) do -- TODO WHy 192 in game?
+        object.charging_offsets[i] = zero_object.charging_offsets[i % #zero_object.charging_offsets] -- Set all difference positions
     end
 end
 
