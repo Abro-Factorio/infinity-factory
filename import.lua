@@ -37,5 +37,18 @@ require "prototypes.entity.entities.rocket-silo"
 require "prototypes.entity.entities.roboport"
 require "prototypes.entity.entities.storage-tank"
 require "prototypes.entity.entities.pump"
-require "prototypes.entity.entities.accumulator"
-require "prototypes.entity.entities.accumulator"
+require "prototypes.entity.entities.beacon"
+require "prototypes.entity.entities.pipe"
+require "prototypes.entity.entities.pipe-to-ground"
+require "prototypes.entity.entities.pipe"
+require "prototypes.entity.entities.chemical-plant"
+require "prototypes.entity.entities.oil-refinery"
+require "prototypes.entity.entities.centrifuge"
+
+--TODO spider!
+-- require "prototypes.entity.entities.reactor"
+-- require "prototypes.entity.entities.heat-exchanger"
+-- require "prototypes.entity.entities.steam-turbine"
+-- require "prototypes.entity.entities.heat-pipe"
+
+
