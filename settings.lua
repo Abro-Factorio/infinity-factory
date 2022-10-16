@@ -45,7 +45,7 @@ _G.data:extend({
 		order = "b-a"
 	},
 	{
-		type = "double-setting", -- TODO double?
+		type = "double-setting",
 		name = "infinity-factory-biter-speed-coefficient",
 		setting_type = "startup",
         minimum_value = -100.0,
@@ -54,7 +54,7 @@ _G.data:extend({
 		order = "b-b"
 	},
 	{
-		type = "double-setting", -- TODO double?
+		type = "double-setting",
 		name = "infinity-factory-biter-speed-max",
 		setting_type = "startup",
         minimum_value = 0.01,

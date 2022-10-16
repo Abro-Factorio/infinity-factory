@@ -6,7 +6,7 @@ require "functions.create-item"
 require "functions.create-recipe"
 require "functions.add-data"
 
---require "prototypes.entity.enemy"
+require "prototypes.entity.enemy"
 
 require "prototypes.entity.entities.assembler"
 require "prototypes.entity.entities.belt"
