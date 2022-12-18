@@ -6,7 +6,7 @@ _G.data:extend({
         minimum_value = 0,
 		maximum_value = 10,
 		default_value = 4,
-		order = "a"
+		order = "a-a"
 	},
 	{
 		type = "int-setting", -- TODO double?
@@ -15,7 +15,7 @@ _G.data:extend({
         minimum_value = 2,
 		maximum_value = 16,
 		default_value = 2,
-		order = "a"
+		order = "a-b"
 	},
 	{
 		type = "int-setting", -- TODO double?
@@ -24,7 +24,7 @@ _G.data:extend({
         minimum_value = 2,
 		maximum_value = 16,
 		default_value = 4,
-		order = "a"
+		order = "a-c"
 	},
 	{
 		type = "int-setting", -- TODO double?
@@ -33,7 +33,7 @@ _G.data:extend({
         minimum_value = 4,
 		maximum_value = 16,
 		default_value = 8,
-		order = "a"
+		order = "a-d"
 	},
 	{
 		type = "int-setting", -- TODO double?
