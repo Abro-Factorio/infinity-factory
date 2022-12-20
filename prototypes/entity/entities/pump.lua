@@ -3,7 +3,6 @@ local EXAMPLE_NAME = "pump"
 local PREFIX_NAME = "pump-"
 
 local function object_updater(zero_object, level, object)
-    -- TODO What is it? object.fluid_box.base_area = zero_object.fluid_box.base_area * math.pow(Config.upgrade_multiplier, level)
     object.fluid_box.height = zero_object.fluid_box.height * math.pow(Config.upgrade_multiplier, level)
     object.pumping_speed = zero_object.pumping_speed * math.pow(Config.upgrade_multiplier, level)
 end
