@@ -1,29 +1,28 @@
 local calculate_energy_required
-local calculate_ingridients
+local calculate_ingredients
 
-function create_recipe_with_level(exmaple_name, prefix_name, level)
-    return create_recipe_with_level(exmaple_name, prefix_name, level, Consts.EMPTY_FUNCTION)
-end
-
-function create_recipe_with_level(exmaple_name, prefix_name, level, recipe_updater)
+function create_recipe_with_level(example_name, prefix_name, recipe_name, level, recipe_updater)
     validate_level(level)
     local new_name = get_name_by_level(prefix_name, level)
-    local zero_recipe = data.raw["recipe"][exmaple_name]
-    local prev_name = get_prev_name_by_level(prefix_name, level, exmaple_name)
+    local zero_recipe = data.raw["recipe"][recipe_name]
+    local prev_name = get_prev_name_by_level(prefix_name, level, example_name)
 
-    local recipe = util.table.deepcopy(zero_recipe)
+    local recipe = {}
+    recipe.type = "recipe"
     recipe.name = new_name
     recipe.energy_required = calculate_energy_required(zero_recipe, level)
 
-    if (recipe.normal == nil and recipe.expensive == nil) then
+    if (zero_recipe.normal == nil and zero_recipe.expensive == nil) then
         set_recipe_common_data(recipe, prev_name, new_name, false)
     end
 
-    if (recipe.normal ~= nil) then
+    if (zero_recipe.normal ~= nil) then
+        recipe.normal = {}
         set_recipe_common_data(recipe.normal, prev_name, new_name, false)
     end
 
-    if (recipe.expensive ~= nil) then
+    if (zero_recipe.expensive ~= nil) then
+        recipe.expensive = {}
         set_recipe_common_data(recipe.expensive, prev_name, new_name, true)
     end
 
@@ -40,7 +39,7 @@ function calculate_energy_required(zero_recipe, level)
     return zero_recipe_energy_required * math.pow(Config.cost_multiplier, level)
 end
 
-function calculate_ingridients(prev_name, expensive)
+function calculate_ingredients(prev_name, expensive)
     local cost_multiplier = Config.cost_multiplier
     if expensive then
         cost_multiplier = Config.cost_expensive_multiplier
@@ -53,6 +52,6 @@ end
 
 function set_recipe_common_data(recipe, prev_name, new_name, expensive)
     recipe.enabled = true -- TODO false // table.insert(data.raw["technology"]["advanced-material-processing"].effects,{type = "unlock-recipe",recipe = "assembling-machine-T1"})
-    recipe.ingredients = calculate_ingridients(prev_name, expensive)
+    recipe.ingredients = calculate_ingredients(prev_name, expensive)
     recipe.result = new_name
 end
