@@ -1,6 +1,5 @@
 local calculate_max_health
 local calculate_next_upgrade
-local set_emissions_per_minute
 local set_energy_usage
 local set_module_slots
 
@@ -65,6 +64,21 @@ function set_energy_source(zero_object, level, object)
         end
         if (zero_object.energy_source.output_flow_limit ~= nil) then
             object.energy_source.output_flow_limit = change_energy_pow_upgrade(zero_object.energy_source.output_flow_limit, level)
+        end
+        if (zero_object.energy_source.max_temperature ~= nil) then
+            object.energy_source.max_temperature = change_energy_pow_upgrade(zero_object.energy_source.max_temperature, level)
+        end
+        if (zero_object.energy_source.specific_heat ~= nil) then
+            object.energy_source.specific_heat = change_energy_pow_upgrade(zero_object.energy_source.specific_heat, level)
+        end
+        if (zero_object.energy_source.max_transfer ~= nil) then
+            object.energy_source.max_transfer = change_energy_pow_upgrade(zero_object.energy_source.max_transfer, level)
+        end
+        if (zero_object.energy_source.min_working_temperature ~= nil) then
+            object.energy_source.min_working_temperature = change_energy_pow_upgrade(zero_object.energy_source.min_working_temperature, level)
+        end
+        if (zero_object.energy_source.minimum_glow_temperature ~= nil) then
+            object.energy_source.minimum_glow_temperature = change_energy_pow_upgrade(zero_object.energy_source.minimum_glow_temperature, level)
         end
     end
 end
