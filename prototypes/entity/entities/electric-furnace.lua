@@ -1,6 +1,6 @@
 local EXAMPLE_TYPE = "furnace"
 local EXAMPLE_NAME = "electric-furnace"
-local PREFIX_NAME = "furnace-"
+local PREFIX_NAME = "electric-furnace-"
 
 local function object_updater(zero_object, level, object)
     object.crafting_speed = zero_object.crafting_speed * math.pow(Config.upgrade_multiplier, level)
